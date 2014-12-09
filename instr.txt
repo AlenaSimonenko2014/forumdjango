@@ -1,0 +1,46 @@
+pip install virtualenv
+
+# Установить виртуальный питон в папку venv
+virtualenv venv
+
+# Запустить виртуальный питон
+venv\Scripts\activate
+# Появится (venv) в названии, теперь питон у нас работает только виртуальный
+
+# ставим джанго (проверить, что поставилось именно в venv)
+pip install django
+
+# Создаем проект
+python venv\scripts\django-admin.py startproject wwwmyforumru
+
+зайдем в настройки проекта settings.py
+
+# создаем приложение "форум"
+python manage.py startapp forum
+
+# Включить наше приложение в проект. В settings.py в константу INSTALLED_APPS добавим
+'forum'
+
+# Начальная миграция
+python manage.py migrate
+
+# Разрабатываем МОДЕЛИ
+# в models.py
+
+# Фиксируем миграцию
+python manage.py makemigrations
+# Смотрим сам запрос
+python manage.py sqlmigrate forum 0001 (<- номер миграции)
+
+# Делаем поверку
+python manage.py check
+
+# Запустим сервер
+
+# создадим админочку
+python manage.py createsuperuser
+
+# Запустим сервер
+
+
+# ТЕПЕРЬ ПИШЕМ ВЬЮШКИ, ФОРМЫ
