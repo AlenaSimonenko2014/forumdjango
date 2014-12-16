@@ -2,7 +2,7 @@
 {% load static %}
 
 
-<img src="{{ MEDIA_URL }}/1.jpg" alt="Picture of mimi" /> <!-- New line -->
+<img src="{% static "admin/img/1.jpg" %}" alt="Picture of mimi" /> <!-- New line -->
 
 {% for section in last_section_list %}
     <li><a href="{% url 'forum:section' section.id %}">{{ section }}</a></li>
