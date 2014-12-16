@@ -1,12 +1,11 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-#import forum.urls
+# import forum.urls
 
-urlpatterns = patterns('',
-    # Examples:
-    # url(r'^blog/', include('blog.urls')),
-
-    #url(r'^admin/', include(admin.site.urls)),
-
-    #url(r'^$', include(forum.urls)),
+urlpatterns = patterns(
+    '',
+    url(r'^section/(?P<section_id>\d+)/$', 'forum.views.section', name='section'),
+    url(r'^topic/(?P<topic_id>\d+)/$', 'forum.views.topic', name='topic'),
+    url(r'^send_message/(?P<topic_id>\d+)/$', 'forum.views.send_message', name='send_message'),
+    url(r'^$', 'forum.views.index', name='index'),
 )
