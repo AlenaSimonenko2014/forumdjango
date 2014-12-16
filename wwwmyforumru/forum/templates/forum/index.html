@@ -1,0 +1,4 @@
+{% for section in last_section_list %}
+{#    <li><a href="/section/{{ section.id }}/">{{ section }}</a></li>#}
+    <li><a href="{% url 'forum:section' section.id %}">{{ section }}</a></li>
+{% endfor %}

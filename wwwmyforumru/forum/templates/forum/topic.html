@@ -1,0 +1,20 @@
+
+<h1><a href="{% url 'forum:section' section.id %}">{{ section }}</a></h1>
+<h2><a href="{% url 'forum:topic' topic.id %}">{{ topic }}</a></h2>
+
+{% for message in messages %}
+    <li>{{ message.text }}<br />Написал {{ message.user }}: {{ message.date }}</li>
+{% endfor %}
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+{% if user.is_authenticated %}
+    <form action="{% url 'forum:send_message' topic.id %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="msg_text"/>
+    <input type="submit" value="Отправить" />
+    </form>
+{% else %}
+    <p>Незарегистрированные пользователи не могу писать сообщения. <a href="{% url 'login' %}">Войти</a></p>
+    {# TODO ссылка логин с параметром next_page на текущую, чтобы после входа возвращаться сюда и сразу писать сообщ#}
+{% endif %}
