@@ -1,11 +1,12 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 # import forum.urls
+from forum.views import TopicView
 
 urlpatterns = patterns(
     '',
     url(r'^section/(?P<section_id>\d+)/$', 'forum.views.section', name='section'),
-    url(r'^topic/(?P<topic_id>\d+)/$', 'forum.views.topic', name='topic'),
-    url(r'^send_message/(?P<topic_id>\d+)/$', 'forum.views.send_message', name='send_message'),
+    url(r'^topic/(?P<topic_id>\d+)/$', TopicView.as_view(), name='topic'),
+    url(r'^add_topic/(?P<section_id>\d+)/$', 'forum.views.add_topic', name='add_topic'),
     url(r'^$', 'forum.views.index', name='index'),
 )

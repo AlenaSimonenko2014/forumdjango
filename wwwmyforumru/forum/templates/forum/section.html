@@ -4,3 +4,5 @@
     <li><a href="{% url 'forum:topic' topic.id %}">{{ topic }}</a></li>
 {% endfor %}
 
+<a href="{% url 'forum:add_topic' section.id %}">Добавить новую тему</a>
+

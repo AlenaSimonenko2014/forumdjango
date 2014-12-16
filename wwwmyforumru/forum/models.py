@@ -29,3 +29,14 @@ class Message(models.Model):
         return "Message from {0} in [{1}] date ({2}): {3}...".format(str(self.user), self.topic,
                                                                      self.date.strftime("%d %B %Y (%H:%M:%S)"),
                                                                      self.text[:20])
+
+
+# class UserProfile:
+#     pass
+    # user = models.ForeignKey(User)
+    # username = user.username
+    # email = user.email
+    # first_name = user.first_name
+    # last_name = user.last_name
+
+
