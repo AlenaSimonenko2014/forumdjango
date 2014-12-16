@@ -43,15 +43,18 @@ INSTALLED_APPS = (
     'registration',
 )
 ACCOUNT_ACTIVATION_DAYS = 1
-#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+#EMAIL_HOST = 'smtp.gmail.com'
+#EMAIL_PORT = 465
+#EMAIL_USE_TLS = True
+
+#from wwwmyforumru.local_settings import email_HOST_USER, email_HOST_PASSWORD
+#EMAIL_HOST_USER = email_HOST_USER
+#EMAIL_HOST_PASSWORD = email_HOST_PASSWORD
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 AUTH_USER_EMAIL_UNIQUE = True
-EMAIL_HOST = 'localhost'
-EMAIL_PORT = 1025
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
-EMAIL_USE_TLS = False
-DEFAULT_FROM_EMAIL = 'noreply@президент.рф'
-#LOGIN_REDIRECT_URL = '/'
+DEFAULT_FROM_EMAIL = 'noreply@forum.ru'
+LOGIN_REDIRECT_URL = '/'
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
