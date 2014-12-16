@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Форум
+    <br/>Мой профиль
+{% endblock %}
+
+
+{% block content %}
+
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+    {% if request.user.is_authenticated %}
+
+        {% if user_form %}
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ user_form.as_p }}
+                <input type="submit" value="Отправить"/>
+            </form>
+        {% else %}
+            <li>Юзернейм: {{ request.user.username }}</li>
+            <li>E-mail: {{ request.user.email }}</li>
+            <li>Имя: {{ request.user.first_name }}</li>
+            <li>Фамилия: {{ request.user.last_name }}</li>
+            <li>Пароль: ****** (<a href="{% url 'auth_password_change' %}">сменить</a>)</li>
+        {% endif %}
+
+        <p>Ваши сообщения:</p>
+        {% for message in messages %}
+            <li>{{ message.text }}<br/><a class="message-description">В теме "{{ message.topic.name }}"</a>: <a class="message-date">{{ message.date }}</a></li>
+            <br />
+        {% endfor %}
+
+    {% else %}
+        <p>Здесь отображается Ваш профиль. Пожалуйста, войдите, чтобы его посмотреть. <a
+                href="{% url 'auth_login' %}?next={{ request.get_full_path }}">Войти</a></p>
+    {% endif %}
+
+
+{% endblock %}

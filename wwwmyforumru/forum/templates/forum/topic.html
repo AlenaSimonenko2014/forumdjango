@@ -1,8 +1,15 @@
-<h1><a href="{% url 'forum:section' section.id %}">{{ section }}</a></h1>
-<h2><a href="{% url 'forum:topic' topic.id %}">{{ topic }}</a></h2>
+{% extends "base.html" %}
+
+{% block title %}Форум
+    <br />Раздел <a href="{% url 'forum:section' section.id %}">{{ section.name }}</a>
+    <br />Тема {{ topic.name }}
+{% endblock %}
+
+{% block content %}
 
 {% for message in messages %}
     <li>{{ message.text }}<br/>Написал {{ message.user }}: {{ message.date }}</li>
+    <br />
 {% endfor %}
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
@@ -15,6 +22,8 @@
     </form>
 {% else %}
     <p>Незарегистрированные пользователи не могу писать сообщения. <a
-            href="{% url 'login' %}?next={{ request.get_full_path }}">Войти</a></p>
+            href="{% url 'auth_login' %}?next={{ request.get_full_path }}">Войти</a></p>
     {# TODO ссылка логин с параметром next_page на текущую, чтобы после входа возвращаться сюда и сразу писать сообщ#}
 {% endif %}
+
+{% endblock %}

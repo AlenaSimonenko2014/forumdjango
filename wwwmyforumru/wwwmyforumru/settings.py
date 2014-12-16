@@ -40,7 +40,18 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'forum',
+    'registration',
 )
+ACCOUNT_ACTIVATION_DAYS = 1
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+AUTH_USER_EMAIL_UNIQUE = True
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = False
+DEFAULT_FROM_EMAIL = 'noreply@президент.рф'
+#LOGIN_REDIRECT_URL = '/'
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

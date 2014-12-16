@@ -1,8 +1,15 @@
+{% extends "base.html" %}
 
-<h1><a href="{% url 'forum:section' section.id %}">{{ section }}</a></h1>
+{% block title %}Форум
+    <br />Раздел {{ section.name }}
+{% endblock %}
+
+{% block content %}
+
 {% for topic in topics %}
     <li><a href="{% url 'forum:topic' topic.id %}">{{ topic }}</a></li>
 {% endfor %}
 
 <a href="{% url 'forum:add_topic' section.id %}">Добавить новую тему</a>
 
+{% endblock %}

@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, render_to_response, get_object_or_404
@@ -7,7 +8,7 @@ from django.utils.datetime_safe import datetime
 from django.views.generic import View
 
 from forum.models import Section, Topic, Message
-from forum.forms import TopicForm, MessageForm  # , UserForm, UserProfileForm
+from forum.forms import TopicForm, MessageForm, UserForm  # UserProfileForm
 
 
 def index(request):
@@ -51,7 +52,7 @@ class TopicView(View):
         # try:
         # m = Message(text=request.POST["msg_text"], topic=topic, user=request.user, date=datetime.now())
         # m.save()
-        #     # check correct msg_text
+        # # check correct msg_text
         # except (KeyError, Topic.DoesNotExist) as e:  # TODO CorrectMessageException
         #     # Redisplay the topic message addind form.
         #     print("FATAL PIZDAUSCASS", e)
@@ -80,6 +81,26 @@ def add_topic(request, section_id):
         form = TopicForm()
 
     return render_to_response('forum/add_topic.html', {'form': form, 'section_id': section_id}, context)
+
+
+class ProfileView(View):
+    def get(self, request, *args, **kwargs):
+        user = request.user
+        # user_form = UserForm(initial={'user': user})
+        messages = Message.objects.filter(user=user)
+        return render(request, 'forum/profile.html',
+                      {'messages': messages,
+                       'user_form': None})
+
+    def post(self, request, *args, **kwargs):
+        user_form = UserForm(request.POST)
+        messages = Message.objects.filter(user=request.user)
+        if user_form.is_valid():
+            user_form.save()
+
+        return render(request, 'forum/profile.html',
+                      {'messages': messages,
+                       'user_form': user_form})
 
 
 
