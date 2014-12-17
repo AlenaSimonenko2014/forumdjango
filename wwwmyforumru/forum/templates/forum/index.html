@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
-{% block title %}Форум
-    <br />Главная{% endblock %}
+{% block title %}<a class="head-title">Главная</a>{% endblock %}
 
 {% block content %}
-{% load static %}
+    <div class="main_sections">
+        {% load static %}
 
-
-{% for section in last_section_list %}
-    <li><a href="{% url 'forum:section' section.id %}">{{ section }}</a></li>
-{% endfor %}
+        {% for section in last_section_list %}
+            <li><a href="{% url 'forum:section' section.id %}">{{ section.name }}</a></li>
+        {% endfor %}
+    </div>
 
 {% endblock %}

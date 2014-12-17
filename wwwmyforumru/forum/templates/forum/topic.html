@@ -1,14 +1,13 @@
 {% extends "base.html" %}
 
-{% block title %}Форум
-    <br />Раздел <a href="{% url 'forum:section' section.id %}">{{ section.name }}</a>
+{% block title %}Раздел <a class="head-title" href="{% url 'forum:section' section.id %}">{{ section.name }}</a>
     <br />Тема {{ topic.name }}
 {% endblock %}
 
 {% block content %}
-
+<div class="chat">
 {% for message in messages %}
-    <li>{{ message.text }}<br/>Написал {{ message.user }}: {{ message.date }}</li>
+    <li>{{ message.text }}<br/><a class="message-description">Написал {{ message.user }}</a>: <a class="message-date"> {{ message.date }}</a></li>
     <br />
 {% endfor %}
 
@@ -25,5 +24,5 @@
             href="{% url 'auth_login' %}?next={{ request.get_full_path }}">Войти</a></p>
     {# TODO ссылка логин с параметром next_page на текущую, чтобы после входа возвращаться сюда и сразу писать сообщ#}
 {% endif %}
-
+</div>
 {% endblock %}

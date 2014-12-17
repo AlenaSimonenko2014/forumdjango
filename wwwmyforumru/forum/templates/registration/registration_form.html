@@ -1,19 +1,25 @@
 
 {% extends "base.html" %}
 
-{% block content %}
-<h1>Регистрация</h1>
-<form method="post" action="">
-{% csrf_token %}
-<dl class="register">
-{% for field in form %}
-    <dt>{{ field.label_tag }}</dt>
-    <dd class="clearfix">{{ field }}
-    {% if field.help_text %}<div class="clearfix">{{ field.help_text }}</div>{% endif %}
-    {% if field.errors %}<div class="myerrors clearfix">{{ field.errors }}</div>{% endif %}
-    </dd>
-{% endfor %}
-</dl>
-<input type="submit" value="Зарегистрироваться" / class="clearfix">
-</form>
-{% endblock %}
+    {% block content %}
+
+    <div class="reg_block">
+        <a class="head-title" href="/">Регистрация</a>
+
+        <div class="reg_table">
+            <form method="post" action="">
+            {% csrf_token %}
+            <dl class="register_text">
+            {% for field in form %}
+                <dt class="register">{{ field.label_tag }}</dt>
+                <dd class="clearfix reg_field">{{ field }}
+                {% if field.help_text %}<div class="clearfix">{{ field.help_text }}</div>{% endif %}
+                {% if field.errors %}<div class="myerrors clearfix">{{ field.errors }}</div>{% endif %}
+                </dd>
+            {% endfor %}
+            </dl>
+            <input type="submit" class="button" value="Зарегистрироваться" / class="clearfix">
+            </form>
+        </div>
+    </div>
+    {% endblock %}

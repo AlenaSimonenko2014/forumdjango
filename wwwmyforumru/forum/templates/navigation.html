@@ -1,11 +1,11 @@
+<header>
+    <a class="navigation-title" href="/">Главная</a>
 
-<a class="navigation-title" href="/">Главная</a>
-
-{% if request.user.is_authenticated %}
-    <a class="navigation-title" href="{% url 'forum:profile' %}">Мой профиль</a>
-    <a class="navigation-title" href="{% url 'auth_logout' %}">Выйти</a>
-{% else %}
-    <a class="navigation-title" href="{% url 'registration_register' %}">Зарегистрироваться</a>
-    <a class="navigation-title" href="{% url 'auth_login' %}">Войти</a>
-{% endif %}
-
+    {% if request.user.is_authenticated %}
+        <a class="navigation-title" href="{% url 'forum:profile' %}">Мой профиль</a>
+        <a class="navigation-title" href="{% url 'auth_logout' %}">Выйти</a>
+    {% else %}
+        <a class="navigation-title" href="{% url 'registration_register' %}">Зарегистрироваться</a>
+        <a class="navigation-title" href="{% url 'auth_login' %}">Войти</a>
+    {% endif %}
+</header>

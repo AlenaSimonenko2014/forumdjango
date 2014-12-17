@@ -1,15 +1,15 @@
 {% extends "base.html" %}
+    {% block title %}Раздел {{ section.name }}
+    {% endblock %}
 
-{% block title %}Форум
-    <br />Раздел {{ section.name }}
-{% endblock %}
+    {% block content %}
+<div class="main_sections">
+    {% for topic in topics %}
+        <li><a href="{% url 'forum:topic' topic.id %}">{{ topic.name }}</a></li>
+    {% endfor %}
 
-{% block content %}
-
-{% for topic in topics %}
-    <li><a href="{% url 'forum:topic' topic.id %}">{{ topic }}</a></li>
-{% endfor %}
-
-<a href="{% url 'forum:add_topic' section.id %}">Добавить новую тему</a>
-
+    <div class="dobavit">
+        <a href="{% url 'forum:add_topic' section.id %}">Добавить новую тему</a>
+    </div>
+</div>
 {% endblock %}

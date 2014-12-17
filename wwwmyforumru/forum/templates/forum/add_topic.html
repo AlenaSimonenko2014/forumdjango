@@ -1,10 +1,8 @@
 {% extends "base.html" %}
 
-{% block title %}Форум. Добавить новую тему.{% endblock %}
+{% block title %}Добавить новую тему{% endblock %}
 
 {% block content %}
-        <h1>Добавить новую тему.</h1>
-
         <form id="category_form" method="post" action="{% url 'forum:add_topic' section_id %}">
 
             {% csrf_token %}
@@ -18,6 +16,7 @@
                 {{ field }}
             {% endfor %}
 
-            <input type="submit" name="submit" value="Создать новую тему." />
+            <input class="button" type="submit" name="submit" value="Создать новую тему." />
         </form>
+</div>
 {% endblock %}
