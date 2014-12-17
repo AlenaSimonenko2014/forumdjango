@@ -3,6 +3,8 @@
 *.pot
 *.pyc
 .idea/
+*.idea
+.idea
 __pycache__/
 venv/
 local_settings.py
