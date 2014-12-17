@@ -21,13 +21,16 @@ header {
   padding: auto;
   overflow: hidden;
   border: none;
-  font: normal 46px/1 "Comic Sans MS", Times, serif;
+  font: 2vw "Comic Sans MS", Times, serif;
   color: rgba(255,255,255,1);
   text-align: center;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
   background: url("BG_header.jpg") no-repeat;
   border-radius: 10px;
+  min-height: 100px;
+  min-width: 1000px;
+
 }
 
 .header_table {
@@ -42,6 +45,7 @@ footer {
     position: relative;
     margin-top: -40px; /* negative value of footer height */
     margin-left: 25%;
+    margin-right: 25%;
     height: 5%;
     width: 50%;
     clear:both;
@@ -49,25 +53,31 @@ footer {
     padding: auto;
     overflow: hidden;
     border: none;
-    font: normal 20px/1 "Comic Sans MS", Times, serif;
+    font: 1vw "Comic Sans MS", Times, serif;
     color: rgba(150,79,76, 0.999);
     text-align: center;
     -o-text-overflow: ellipsis;
     text-overflow: ellipsis;
     background: url("BG_header.jpg") no-repeat;
     border-radius: 10px;
+    min-height: 100px;
+    min-width: 1000px;
 }
 
 .navigation-title {
     color: Burlywood;
     text-decoration: none;
+    margin-right: 2%;
+    margin-left: 2%;
 }
+
+
 
 .head-title {
     margin-top: 3%;
     color: #955251;
     text-align: center;
-    font: normal 46px/1 "Comic Sans MS", Times, serif;
+    font: 2vw "Comic Sans MS", Times, serif;
     text-decoration: none;
 }
 
@@ -182,5 +192,5 @@ footer {
 .myerrors{
     text-decoration: none;
     font: normal 20px/1 "Comic Sans MS", Times, serif;
-    color: #b05f5e;
+    color: #CD3700;
 }

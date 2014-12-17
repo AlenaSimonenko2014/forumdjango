@@ -17,7 +17,7 @@
     <dl class="register_text">
     {% for field in form %}
         <dt class="register">{{ field.label_tag }}</dt>
-        <dd class="clearfix">{{ field }}
+        <dd class="clearfix reg_field">{{ field }}
         {% if field.help_text %}<div class="clearfix">{{ field.help_text }}</div>{% endif %}
         {% if field.errors %}<div class="myerrors clearfix">{{ field.errors }}</div>{% endif %}
         </dd>
